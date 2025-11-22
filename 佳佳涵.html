@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佳佳涵 | 个人介绍</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9fbf8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #6e6d7a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2ecc71;
+        }
+        
+        /* 头部样式 */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #f9fbf8 0%, #e8f5e9 100%);
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+            margin-bottom: 25px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a4731;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #5a7d5a;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        /* 内容区域样式 */
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #1a4731;
+            text-align: center;
+        }
+        
+        /* 卡片网格布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.15);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a4731;
+        }
+        
+        .card-text {
+            color: #6e6d7a;
+            margin-bottom: 15px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #9e9ea7;
+            font-size: 14px;
+        }
+        
+        /* 技能样式 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #5a7d5a;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #e8f5e9;
+        }
+        
+        .skill-tag:hover {
+            background-color: #2ecc71;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        /* 个人信息表格 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-table th, .info-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #f3f3f4;
+        }
+        
+        .info-table th {
+            background-color: #e8f5e9;
+            color: #1a4731;
+            font-weight: 600;
+            width: 25%;
+        }
+        
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 联系信息样式 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15);
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+            color: #2ecc71;
+            margin-right: 15px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background: linear-gradient(135deg, #1a4731 0%, #2e7d32 100%);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #a5d6a7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #c8e6c9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #c8e6c9;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">佳佳涵</a>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 头部区域 -->
+    <header>
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="佳佳涵" class="avatar">
+            <h1 class="title">佳佳涵</h1>
+            <p class="subtitle">计算机科学与技术专业学生 | 前端开发爱好者 | 创意设计探索者</p>
+            <a href="#contact" class="btn">联系我</a>
+        </div>
+    </header>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <table class="info-table">
+                <tr>
+                    <th>姓名</th>
+                    <td>佳佳涵</td>
+                </tr>
+                <tr>
+                    <th>专业</th>
+                    <td>计算机科学与技术</td>
+                </tr>
+                <tr>
+                    <th>班级</th>
+                    <td>2班</td>
+                </tr>
+                <tr>
+                    <th>学号</th>
+                    <td>2-30</td>
+                </tr>
+                <tr>
+                    <th>兴趣</th>
+                    <td>看电影、编程、设计、旅行</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- 技能部分 -->
+    <section id="skills" class="content-section" style="background-color: #e8f5e9;">
+        <div class="container">
+            <h2 class="section-title">我的技能</h2>
+            <div class="skills-container">
+                <div class="skill-tag">HTML/CSS</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">UI/UX设计</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">Git</div>
+                <div class="skill-tag">响应式设计</div>
+                <div class="skill-tag">Photoshop</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="content-section">
+        <div class="container">
+            <h2 class="section-title">我的项目</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="项目1" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">个人博客网站</h3>
+                        <p class="card-text">使用HTML、CSS和JavaScript创建的响应式个人博客网站，展示我的学习和项目经验。</p>
+                        <div class="card-meta">
+                            <span><i class="far fa-heart"></i> 24</span>
+                            <span><i class="far fa-eye"></i> 156</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="项目2" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">电商网站UI设计</h3>
+                        <p class="card-text">为小型电商平台设计的用户界面，注重用户体验和视觉吸引力。</p>
+                        <div class="card-meta">
+                            <span><i class="far fa-heart"></i> 42</span>
+                            <span><i class="far fa-eye"></i> 289</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="项目3" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">任务管理应用</h3>
+                        <p class="card-text">使用React开发的任务管理工具，帮助用户高效组织日常任务和项目。</p>
+                        <div class="card-meta">
+                            <span><i class="far fa-heart"></i> 18</span>
+                            <span><i class="far fa-eye"></i> 134</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="content-section" style="background-color: #e8f5e9;">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>邮箱</h3>
+                        <p>jiajiahan@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>电话</h3>
+                        <p>+86 123-4567-8900</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>地址</h3>
+                        <p>中国某城市</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">佳佳涵</div>
+                    <p style="color: #c8e6c9; max-width: 300px;">计算机科学与技术专业学生，热爱前端开发和UI设计，正在不断学习和成长中。</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>导航</h3>
+                        <ul>
+                            <li><a href="#about">关于我</a></li>
+                            <li><a href="#skills">技能</a></li>
+                            <li><a href="#projects">项目</a></li>
+                            <li><a href="#contact">联系</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>社交</h3>
+                        <ul>
+                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#">Dribbble</a></li>
+                            <li><a href="#">微博</a></li>
+                            <li><a href="#">知乎</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 佳佳涵. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
